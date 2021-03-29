@@ -157,13 +157,13 @@ int messaging(int clientfd,struct sockaddr_in* clientaddr)
             continue;
         }
 		clnt_write=fdopen(dup(clientfd),"w"); //여기에 쓰면 패킷이보내짐
-		sprintf(cnt_len,"Content-length:%d\r\n",12);
+		sprintf(cnt_len,"Content-length:%d\r\n",11);
 		fputs(protocol,clnt_write);
         fputs(server,clnt_write);
         fputs(cnt_len,clnt_write);
         fputs(keepalive,clnt_write);
         fputs(cnt_type,clnt_write);//default==html//\r\n\r\n 
-		//이걸 차례대로 보내주면, 된다. 일단 hello world 보내면 contentlength=12이겠지?그래서 위에설정 12
+		//이걸 차례대로 보내주면, 된다. 일단 hello world 보내면 contentlength=11이겠지?그래서 위에설정 11
 		fputs(message,clnt_write);
 		fflush(clnt_write);//전송시켜주기
 		fclose(clnt_write);
